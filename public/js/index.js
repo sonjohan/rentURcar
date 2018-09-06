@@ -10,6 +10,14 @@ $(document).ready(function () {
   // Variable to hold our posts
   var posts;
 
+  $('#search-menu').on("click", function(){
+    event.preventDefault();
+    $("#main-navigation").html(
+      '<form>'+
+      '</form>'
+    );
+  });
+
   // The code below handles the case where we want to get blog posts for a specific author
   // Looks for a query param in the url for author_id
   var url = window.location.search;

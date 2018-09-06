@@ -1,40 +1,36 @@
 $(document).ready(function() {
-  // Getting jQuery references to the post body, title, form, and author select
+
   var titleInput = $("#title");
   var makeInput = $("#make");
-  var modelInput = $("model");
-  var yearInput = $("year");
-  var priceInput = $("price");
+  var modelInput = $("#model");
+  var yearInput = $("#year");
+  var priceInput = $("#price");
   var cmsForm = $("#cms");
   var authorSelect = $("#author");
-  // Adding an event listener for when the form is submitted
+  
   $(cmsForm).on("submit", handleFormSubmit);
-  // Gets the part of the url that comes after the "?" (which we have if we're updating a post)
+
   var url = window.location.search;
   var postId;
   var authorId;
-  // Sets a flag for whether or not we're updating a post to be false initially
+
   var updating = false;
 
-  // If we have this section in our url, we pull out the post id from the url
-  // In '?post_id=1', postId is 1
   if (url.indexOf("?post_id=") !== -1) {
     postId = url.split("=")[1];
     getPostData(postId, "post");
   }
-  // Otherwise if we have an author_id in our url, preset the author select box to be our Author
+
   else if (url.indexOf("?author_id=") !== -1) {
     authorId = url.split("=")[1];
   }
 
-  // Getting the authors, and their posts
   getAuthors();
 
-  // A function for handling what happens when the form to create a new post is submitted
   function handleFormSubmit(event) {
     event.preventDefault();
-    // Wont submit the post if we are missing a title, make, or author
-    if (!titleInput.val().trim() || !makeInput.val().trim() || !authorSelect.val()) {
+
+    if (!titleInput.val().trim() || !authorSelect.val()) {
       return;
     }
     // Constructing a newPost object to hand to the database
@@ -42,8 +38,8 @@ $(document).ready(function() {
       title: titleInput.val().trim(),
       make: makeInput.val().trim(),
       model: modelInput.val().trim(),
-      year: parseInt(yearInput.val()),
-      price: parseInt(priceInput.val()),
+      year: parseFloat(yearInput.val().trim()),
+      price: parseFloat(priceInput.val().trim()).toFixed(2),
       AuthorId: authorSelect.val()
     };
 

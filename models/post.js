@@ -14,13 +14,13 @@ module.exports = function(sequelize, DataTypes) {
     },
     year:{
       type: DataTypes.INTEGER,
-      allowNull: false
-      // validate: {
-      //   len: [4]
-      // }
+      allowNull: false,
+      validate: {
+        len: [4]
+      }
     },
     price:{
-      type: DataTypes.INTEGER,
+      type: DataTypes.DECIMAL(10,2),
       allowNull: false
     }
   });
@@ -28,7 +28,6 @@ module.exports = function(sequelize, DataTypes) {
   Post.associate = function(models) {
     Post.belongsTo(models.Author, {
       foreignKey: {
-        name: 'firstName',
         allowNull: false
       }
     });
