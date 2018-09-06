@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+  $("#second-navigation").css("display","none");
+
   var blogContainer = $(".blog-container");
   var postCategorySelect = $("#category");
 
@@ -8,12 +10,10 @@ $(document).ready(function () {
 
   var posts;
 
-  $('#search-menu').on("click", function(){
+  $('#search-menu').on("click", function () {
     event.preventDefault();
-    $("#main-navigation").html(
-      '<form>'+
-      '</form>'
-    );
+    $("#main-navigation").css("display","none");
+    $("#second-navigation").css("display","inline");
   });
 
   var url = window.location.search;
@@ -27,9 +27,11 @@ $(document).ready(function () {
     getPosts();
   }
 
-  $('#search').keyup(function() {
+  $('#search-input').keyup(function () {
+    console.log("key");
     autocomplete($(this).val().trim());
   });
+
 
 
   function getPosts(author) {
@@ -85,6 +87,7 @@ $(document).ready(function () {
     editBtn.text("EDIT");
     editBtn.addClass("edit btn btn-info");
     var newPostTitle = $("<h3>");
+    newPostTitle.addClass("text-dark");
     var newPostDate = $("<small>");
     var newPostAuthor = $("<p>");
     newPostAuthor.text("Posted by: " + post.Author.firstName + " " + post.Author.lastName);
@@ -97,12 +100,13 @@ $(document).ready(function () {
     var newPostBody = $("<p>");
     newPostTitle.text(post.title + " ");
     //Blob
-    // var blobURL = blobUtil.createObjectURL(post.image);
+
     //body of the card
     newPostBody.html(
-      "<img src='" + blobURL + "'> </img><p>" + post.make + " " + post.model + "<br>" + post.year + "<br>$" + post.price + "/day</p>"
+      "<img src='" + post.image + "'> </img><p>" + post.make + " " + post.model + "<br>" + post.year + "<br>$" + post.price + "/day</p>"
     );
-    newPostDate.text("Posted: "+formattedDate);
+    console.log(post.image);
+    newPostDate.text("Posted: " + formattedDate);
     newPostCardBody.append(newPostDate);
     newPostCardHeading.append(deleteBtn);
     newPostCardHeading.append(editBtn);
@@ -140,8 +144,8 @@ $(document).ready(function () {
     blogContainer.empty();
     var messageH2 = $("<h2>");
     messageH2.css({ "text-align": "center", "margin-top": "50px" });
-    messageH2.html("No cars posted yet" + partial + ", navigate <a href='/cms" + query +
-      "'>here</a> in order to get started.");
+    messageH2.html("No cars posted yet" + partial + ", Sign Up <a href='/signup" + query +
+      "'>here</a> to get started.");
     blogContainer.append(messageH2);
   }
 
@@ -157,7 +161,7 @@ $(document).ready(function () {
         availableTags.push(response.features[i].place_name);
       };
       $(function () {
-        $("#search").autocomplete({
+        $("#search-input").autocomplete({
           source: availableTags
         });
       });

@@ -6,7 +6,7 @@ form#cms {
   margin-top: 50px;
 }
 
-#cms textarea {
+#textarea {
   resize: none;
 }
 
@@ -48,4 +48,32 @@ button.edit {
 
 .jumbotron {
   background-image: url("../img/mainBackground.jpg");
+}
+
+#jumbo-cms {
+  background-image: url("../img/120941-road-wallpaper-1920x1080-computer.jpg");
+  background-size: cover;
+  width: 100%;
+  height:100%;
+  opacity: 1.3;
+  margin-bottom: 0px;
+}
+
+h1 {
+  font-family: 'Bangers', cursive; 
+  font-size: 60px;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  color:white;
+}
+
+h3 {
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+  color: white;
+}
+
+#card-cms {
+  width: 800px;
+  height: 800px;
 }
