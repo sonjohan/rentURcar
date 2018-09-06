@@ -42,8 +42,8 @@ $(document).ready(function() {
       title: titleInput.val().trim(),
       make: makeInput.val().trim(),
       model: modelInput.val().trim(),
-      year: parseFloat(yearInput.val()),
-      price: parseFloat(priceInput.val()),
+      year: parseInt(yearInput.val()),
+      price: parseInt(priceInput.val()),
       AuthorId: authorSelect.val()
     };
 
@@ -103,7 +103,7 @@ $(document).ready(function() {
   // to create an author first
   function renderAuthorList(data) {
     if (!data.length) {
-      window.location.href = "/authors";
+      window.location.href = "/cms";
     }
     $(".hidden").removeClass("hidden");
     var rowsToAdd = [];
@@ -133,7 +133,7 @@ $(document).ready(function() {
       data: post
     })
       .then(function() {
-        window.location.href = "/blog";
+        window.location.href = "/";
       });
   }
 });

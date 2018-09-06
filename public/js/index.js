@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   /* global moment */
 
   // blogContainer holds all of our posts
@@ -23,6 +23,10 @@ $(document).ready(function() {
     getPosts();
   }
 
+  $('#search').keyup(function() {
+    autocomplete($(this).val().trim());
+  });
+
 
   // This function grabs posts from the database and updates the view
   function getPosts(author) {
@@ -30,7 +34,7 @@ $(document).ready(function() {
     if (authorId) {
       authorId = "/?author_id=" + authorId;
     }
-    $.get("/api/posts" + authorId, function(data) {
+    $.get("/api/posts" + authorId, function (data) {
       console.log("Posts", data);
       posts = data;
       if (!posts || !posts.length) {
@@ -48,7 +52,7 @@ $(document).ready(function() {
       method: "DELETE",
       url: "/api/posts/" + id
     })
-      .then(function() {
+      .then(function () {
         getPosts(postCategorySelect.val());
       });
   }
@@ -85,7 +89,7 @@ $(document).ready(function() {
       float: "right",
       color: "blue",
       "margin-top":
-      "-10px"
+        "-10px"
     });
     var newPostCardBody = $("<div>");
     newPostCardBody.addClass("card-body");
@@ -134,8 +138,27 @@ $(document).ready(function() {
     var messageH2 = $("<h2>");
     messageH2.css({ "text-align": "center", "margin-top": "50px" });
     messageH2.html("No cars posted yet" + partial + ", navigate <a href='/cms" + query +
-    "'>here</a> in order to get started.");
+      "'>here</a> in order to get started.");
     blogContainer.append(messageH2);
   }
+
+  function autocomplete(val) {
+    var queryURL = 'https://api.mapbox.com/geocoding/v5/mapbox.places/'
+      + val + '.json?access_token=pk.eyJ1Ijoic29uam9oYW4iLCJhIjoiY2pqMHNuaXpxMGh5dzNrbzR4dDhjazRsMCJ9.Uk7w4H_ayd295uZifRYCbg&autocomplete=true';
+    $.ajax({
+      url: queryURL,
+      method: 'GET'
+    }).then(function (response) {
+      var availableTags = [];
+      for (i = 0; i < response.features.length; i++) {
+        availableTags.push(response.features[i].place_name);
+      };
+      $(function () {
+        $("#search").autocomplete({
+          source: availableTags
+        });
+      });
+    });
+  };
 
 });
