@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login rentURcar</title>
+    <!-- Reset -->
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- Used for Autosuggest -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- Mapbox -->
+    <link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css' rel='stylesheet' />
+    <!--Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC|Bangers|Marvel:700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <!-- My style -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="results.html">
+                <img src="img/rentURcar_logo-02.png" width="250" class="d-inline-block align-top" alt="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="signup.html">Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="jumbotron bg-dark" id="jumbo-cms" style='background-image: url("../img/120941-road-wallpaper-1920x1080-computer.jpg"'>
+
+        <div class="container hidden">
+            <div class="card mx-auto" id="card-login" style="width:800px; opacity:0.9;">
+
+                <div class="text-center" style="color: black">
+                    <br>
+                    <h2>Login to rentURcar.com</h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 offset-md-3">
+                        <br><br>
+                        <form id="loginForm" method="POST" action="/login/" novalidate="novalidate">
+                            <div class="form-group">
+                                <label for="username" class="control-label">Username</label>
+                                <input type="text" class="form-control" id="username" name="username" value="" required="" title="Please enter you username"
+                                    placeholder="example@gmail.com">
+                                <span class="help-block"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="control-label">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" value="" required="" title="Please enter your password">
+                                <span class="help-block"></span>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="remember" id="remember"> Remember login
+                                </label>
+                                <p class="help-block">(if this is a private computer)</p>
+                            </div>
+                            <button type="submit" class="btn btn-success btn-block">Login</button>
+                            <!-- <a href="/forgot/" class="btn btn-default btn-block">Help to login</a> -->
+                        </form>
+                    </div>
+                    <div class="col-md-5 offset-md-3">
+                        <br>
+                        <p class="lead">Register now for <span class="text-success">FREE</span></p>
+                        <ul class="list-unstyled" style="line-height: 2">
+                            <li><span class="fa fa-check text-success"></span> See all your vehicles</li>
+                            <li><span class="fa fa-check text-success"></span> Fast checkout</li>
+                            <li><span class="fa fa-check text-success"></span> Save your favorites</li>
+                        </ul>
+                        <p><a href="./signup.html" class="btn btn-info btn-block">Yes please, register now!</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
