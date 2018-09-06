@@ -22,6 +22,10 @@ module.exports = function(sequelize, DataTypes) {
     price:{
       type: DataTypes.DECIMAL(10,2),
       allowNull: false
+    },
+    image:{
+      type: DataTypes.BLOB,
+      allowNull: false
     }
   });
 

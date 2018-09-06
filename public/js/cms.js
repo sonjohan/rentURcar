@@ -5,6 +5,7 @@ $(document).ready(function() {
   var modelInput = $("#model");
   var yearInput = $("#year");
   var priceInput = $("#price");
+  var imageInput = $("#image");
   var cmsForm = $("#cms");
   var authorSelect = $("#author");
   
@@ -40,6 +41,7 @@ $(document).ready(function() {
       model: modelInput.val().trim(),
       year: parseFloat(yearInput.val().trim()),
       price: parseFloat(priceInput.val().trim()).toFixed(2),
+      image: imageInput.val(),
       AuthorId: authorSelect.val()
     };
 
@@ -83,6 +85,7 @@ $(document).ready(function() {
         modelInput.val(data.model);
         yearInput.val(data.year);
         priceInput.val(data.price);
+        imageInput.val(data.image);
         authorId = data.AuthorId || data.id;
         // If we have a post with this id, set a flag for us to know to update the post
         // when we hit submit
