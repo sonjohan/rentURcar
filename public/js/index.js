@@ -86,7 +86,7 @@ $(document).ready(function () {
     var editBtn = $("<button>");
     editBtn.text("EDIT");
     editBtn.addClass("edit btn btn-info");
-    var newPostTitle = $("<h3>");
+    var newPostTitle = $("<h4>");
     newPostTitle.addClass("text-dark");
     var newPostDate = $("<small>");
     var newPostAuthor = $("<p>");
