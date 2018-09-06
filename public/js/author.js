@@ -20,8 +20,6 @@ $(document).ready(function() {
     upsertAuthor({
       firstName: nameInput.val().trim(),
       lastName: lastNameInput.val().trim(),
-      email: emailInput.val().trim(),
-      passwrod: passwordInput.val().trim()
     });
   }
 
@@ -50,8 +48,6 @@ $(document).ready(function() {
       renderAuthorList(rowsToAdd);
       nameInput.val("");
       lastNameInput.val("");
-      emailInput.val("");
-      password.val("");
     });
   }
 
@@ -70,7 +66,7 @@ $(document).ready(function() {
   function renderEmpty() {
     var alertDiv = $("<div>");
     alertDiv.addClass("alert alert-danger");
-    alertDiv.text("You must create an Author before you can create a Post.");
+    alertDiv.text("You must sign up before you can begin.");
     authorContainer.append(alertDiv);
   }
 
