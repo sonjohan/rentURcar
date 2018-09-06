@@ -1,7 +1,9 @@
 $(document).ready(function() {
-  
+
   var nameInput = $("#author-firstName");
   var lastNameInput = $("#author-lastName");
+  var emailInput = $("author-email");
+  var passwordInput = $("author-password");
   var authorList = $("tbody");
   var authorContainer = $(".author-container");
 
@@ -17,7 +19,9 @@ $(document).ready(function() {
     }
     upsertAuthor({
       firstName: nameInput.val().trim(),
-      lastName: lastNameInput.val().trim()
+      lastName: lastNameInput.val().trim(),
+      email: emailInput.val().trim(),
+      passwrod: passwordInput.val().trim()
     });
   }
 
@@ -46,6 +50,8 @@ $(document).ready(function() {
       renderAuthorList(rowsToAdd);
       nameInput.val("");
       lastNameInput.val("");
+      emailInput.val("");
+      password.val("");
     });
   }
 
